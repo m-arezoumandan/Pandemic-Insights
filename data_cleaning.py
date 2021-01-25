@@ -2,6 +2,11 @@ import csv
 
 
 def cleaning():
+    '''
+
+
+    :return:
+    '''
     country = ''
     max_cases = 0
     elected_countries = []
@@ -43,7 +48,7 @@ def cleaning():
                     else:
                         if row['new_cases'] != '' and num_days < 300:
                             num_days += 1
-                            dict_data[row['location']].append(int(row['new_cases']))
+                            dict_data[row['location']].append(abs(int(row['new_cases'])))
 
                 else:
                     country = row['location']
