@@ -1,34 +1,31 @@
-import data_cleaning as dc
-from sklearn.preprocessing import MinMaxScaler
-import data_smoothing as ds
-import pandas as pd
+from clustering_methods import clustering_methods
+from compute_matrix import compute_matrix
 from plot_distance import plot_distance
-from tslearn.metrics import dtw
-import numpy as np
+from data_cleaning import cleaning, cleaning2
+from data_smoothing import smoothing
+from sklearn.preprocessing import MinMaxScaler
+import pandas as pd
+from sklearn.metrics import silhouette_score
 
-data = dc.cleaning()
-daily_cases = pd.DataFrame(data)
-daily_cases_trans = daily_cases ** 0.5
-daily_cases_norm = MinMaxScaler().fit_transform(daily_cases_trans.values)
-daily_cases_smoothed = pd.DataFrame(ds.smoothing(daily_cases_norm))
+
+daily_cases = pd.DataFrame(cleaning())
+daily_cases_norm = MinMaxScaler().fit_transform(daily_cases.values ** 0.5)
+daily_cases_smoothed = pd.DataFrame(smoothing(daily_cases_norm))
 daily_cases_smoothed.columns = daily_cases.columns
 
-# plotting different countries patterns and their dtw score
-# dtw_score = dtw(daily_cases_smoothed["Italy"], daily_cases_smoothed["China"])
-# x = np.linspace(1, 300, 300)
-# plt.plot(x, daily_cases_smoothed["China"], label="China")
-# plt.plot(x, daily_cases_smoothed["Italy"], color='red', label="Italy")
-# plt.legend()
-# dtw_str = "DTW Score = " + str(dtw_score)
-# plt.title(dtw_str)
-# plt.show()
+dist_num = input("enter '1' for euclidean distances, '2' for DTW, or anything else for termination!\n")
 
-# calculate the distance matrix
-num_countries = len(daily_cases_smoothed.columns)
-distance_matrix = np.zeros((num_countries, num_countries))
-for index_i, i in enumerate(daily_cases_smoothed.values.T):
-    for index_j, j in enumerate(daily_cases_smoothed.values.T):
-        distance_matrix[index_i, index_j] = dtw(i, j)
+distance_matrix = compute_matrix(dist_num, daily_cases_smoothed)
 
+alg_num = input("enter '1' for K-Means, '2' for AGNES, '3' for DBSCAN, "
+                "'4' for OPTICS, '5' for K-medoids, or anything else for termination!\n")
 
-plot_distance(distance_matrix, daily_cases.columns)
+labels = clustering_methods(alg_num, distance_matrix, daily_cases_smoothed.values.T)
+
+xx = zip(list(labels), daily_cases.columns)
+for x in xx:
+    print(x)
+
+plot_distance(distance_matrix, labels, daily_cases.columns)
+
+print("Silhouette score: ",  silhouette_score(distance_matrix, labels, metric="precomputed"))
