@@ -1,5 +1,4 @@
 import sys
-
 from pyclustering.cluster.center_initializer import kmeans_plusplus_initializer
 from sklearn.cluster import AgglomerativeClustering, DBSCAN, OPTICS
 from tslearn.clustering import TimeSeriesKMeans
@@ -21,7 +20,7 @@ def clustering_methods(alg_num, dm, arr):
         clustering = DBSCAN(eps=float(eps), min_samples=4, metric="precomputed").fit(dm)
         return clustering.labels_
     elif alg_num == "4":
-        clustering = OPTICS(min_samples=3, cluster_method='dbscan', metric="precomputed").fit(dm)
+        clustering = OPTICS(min_samples=2, cluster_method='dbscan', metric="precomputed").fit(dm)
         return clustering.labels_
     elif alg_num == "5":
         k = input("enter k:\n")

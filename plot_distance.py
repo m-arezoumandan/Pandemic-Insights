@@ -10,6 +10,6 @@ def plot_distance(distance_matrix, labels, countries):
     plt.subplots_adjust(bottom=0.1)
     plt.scatter(coords[:, 0], coords[:, 1], c=labels)
     for country, x, y in zip(countries, coords[:, 0], coords[:, 1]):
-        plt.annotate(country, xy=(x, y), xytext=(-10, 10), textcoords='offset points')
+        plt.annotate("", xy=(x, y), xytext=(-10, 10), textcoords='offset points')
 
     plt.show()
