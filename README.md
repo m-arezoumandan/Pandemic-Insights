@@ -3,7 +3,7 @@ The purpose of the project is to analyze the spread of Covid-19 in countries all
 
 ## Usage
 ### Prerequisites
-Make sure you installed Python 3.8 and all the libraries used in this project
+Make sure you installed Python 3.8 and all the libraries used in this project.
 ### Run
 Simply run
 ```
@@ -16,5 +16,5 @@ Then you are asked to choose a method for creating the distane matrix. After tha
 ### 
 ## Dataset
 [CSSE COVID-19 Time Series](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series) - This project uses time series table for the global confirmed cases from JHU CSSE COVID-19 Dataset.
-#### Note
+### Note
 Pandemic-Insights works with any version of this dataset. You can simply change the current one with another version of this dataset.
