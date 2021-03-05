@@ -13,8 +13,15 @@ Then you will be asked to choose a method for creating the distane matrix. After
 * List of all the countries with their labels
 * Silhouette score of the result
 * Graph of the result
-### 
+
 ## Dataset
 [CSSE COVID-19 Time Series](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series) - This project uses time series table for the global confirmed cases from the JHU CSSE COVID-19 Dataset.
 ### Note
 Pandemic-Insights works with any version of this dataset. You can simply change the current one with another version of this dataset.
+
+## Results
+One of the best results that could be obtained is shown below with graphs of 5 representatives of each cluster.
+<img width="555" alt="1" src="https://user-images.githubusercontent.com/41535744/110163493-502d1480-7e05-11eb-9d02-cb4a8a05e1e9.png">
+<img width="555" alt="2" src="https://user-images.githubusercontent.com/41535744/110163633-8a96b180-7e05-11eb-8fc9-373c9fe452a5.png">
+<img width="555" alt="3" src="https://user-images.githubusercontent.com/41535744/110163742-b1ed7e80-7e05-11eb-8b38-01663dfc226c.png">
+<img width="555" alt="4" src="https://user-images.githubusercontent.com/41535744/110163940-eeb97580-7e05-11eb-8d9e-23fcf8be0c30.png">
